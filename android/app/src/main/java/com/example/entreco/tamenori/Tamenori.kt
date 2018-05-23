@@ -68,8 +68,8 @@ class Tamenori : Application(), ChildEventListener {
     }
 
     private fun submitMove(moveRef: DatabaseReference) {
-        val row: Int = (Math.random() * 7).toInt()
-        val col: Int = (Math.random() * 7).toInt()
+        val row: Int = (Math.random() * 8).toInt()
+        val col: Int = (Math.random() * 8).toInt()
         moveRef.setValue("{\"row\":$row, \"col\":$col}")
     }
 
