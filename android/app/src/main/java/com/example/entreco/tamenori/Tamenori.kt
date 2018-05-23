@@ -27,7 +27,7 @@ class Tamenori : Application(), ChildEventListener {
         val yourPlayerRef = players.push()
 
         // Add your bot with {"name":"<your bot name>"}
-        yourPlayerRef.child("public").child("name").setValue("Tamenori")
+        yourPlayerRef.child("public").child("name").setValue("TamenoriAndroid")
 
         // Now Proove you're online by playing PingPong
         yourPlayerRef.child("public").child("ping").addValueEventListener(object : ValueEventListener {
