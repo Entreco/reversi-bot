@@ -54,18 +54,44 @@
       };
       firebase.initializeApp(config);
       
-      console.log(firebase.app().name);
-      console.log(firebase.database());
-      
+      <!-- Create Player -->
       var playerRef = firebase.database().ref('players').push();
       playerRef.child('public/').set({
         name: "Tamenori Web"
       });
       
+      <!-- Proove your online -->
       var ping = playerRef.child('public/ping');
       ping.on('value', function(snapshot) {
         ping.set("pong");
       });
+      
+      <!-- Listen for matches -->
+      playerRef.child("matches").on("child_added", snap => {
+          console.log("Yeah baby");
+          
+          var moveRef = snap.ref.child("move");
+          var turnRef = snap.ref.child("board");
+          turnRef.on('value', function(snapshot){
+              submitMove(moveRef);
+          });
+          
+          moveRef.on('value', function(snapshot){
+            if(snapshot.value != null){
+                if(snapshow.value == "rejected"){
+                      submitMove(moveRef);
+                  }
+              }
+          });
+          
+      });
+      
+      function submitMove(ref){
+        console.log("submit move");
+        var row = 4;
+        var col = 3;
+        ref.set("{\"row\":" + row + ", \"col\":" + col + "}");
+      }
       
     </script>
 
