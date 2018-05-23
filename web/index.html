@@ -68,8 +68,8 @@
       
       <!-- Listen for matches -->
       playerRef.child("matches").on("child_added", snap => {
-          console.log("Yeah baby");
-          
+          console.log("Yeah baby - we're in a match");
+         
           var moveRef = snap.ref.child("move");
           var turnRef = snap.ref.child("board");
           turnRef.on('value', function(snapshot){
@@ -77,8 +77,8 @@
           });
           
           moveRef.on('value', function(snapshot){
-            if(snapshot.value != null){
-                if(snapshow.value == "rejected"){
+            if(snapshot.val() != null){
+                if(snapshot.val() == "rejected"){
                       submitMove(moveRef);
                   }
               }
@@ -87,9 +87,8 @@
       });
       
       function submitMove(ref){
-        console.log("submit move");
-        var row = 4;
-        var col = 3;
+        var row = Math.floor(Math.random() * 7);
+        var col = Math.floor(Math.random() * 7);
         ref.set("{\"row\":" + row + ", \"col\":" + col + "}");
       }
       
