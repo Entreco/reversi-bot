@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         playersRef = ref.childByAutoId()
         
         // Add your bot with {"name":"<your bot name>"}
-        playersRef.child("public").child("name").setValue("TamenoriOS")
+        playersRef.child("public").child("name").setValue("iOS - BOT")
         
         
         // Now Proove you're online by playing PingPong
